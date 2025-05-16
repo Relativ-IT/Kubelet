@@ -44,7 +44,7 @@ pipeline {
           buildah build \
             --pull \
             --build-arg KUBELET=${KUBELET} \
-            --build-arg SHA_AMD64=${SHA_AMD64} \
+            --build-arg SHA=${SHA_AMD64} \
             -t $LOCAL_REGISTRY_IMAGE_VERSION_NAME \
             -f ./Dockerfile.amd64 \
             .
