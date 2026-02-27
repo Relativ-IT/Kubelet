@@ -4,7 +4,7 @@ pipeline {
   }
 
   environment{
-    KUBELET="v1.35.1"
+    KUBELET="v1.35.2"
     SHA_AMD64="ac544535074180b9616d3a93b0e13ce8a3f5ea2ff287b605f3d7e0afc2a16ed3cb633ddf6bdb179782f44e9a07c7db14899a942f0ab23bcfea7bbf56e08c63d4"
 
     IMAGE = "kubelet"
