@@ -5,7 +5,7 @@ pipeline {
 
   environment{
     KUBELET="v1.35.2"
-    SHA_AMD64="ac544535074180b9616d3a93b0e13ce8a3f5ea2ff287b605f3d7e0afc2a16ed3cb633ddf6bdb179782f44e9a07c7db14899a942f0ab23bcfea7bbf56e08c63d4"
+    SHA_AMD64="499a61b38dbcddb7105a89cac0f63e1d9a08178c051d693a8095de65939deb4e12ff4a11116d69ec69e14da0d929c8344bbb8ea8ad06cc65d749d327ee0c7c55"
 
     IMAGE = "kubelet"
     LOCAL_REGISTRY_IMAGE_LATEST_NAME = "${env.REGISTRY_LOCAL}/${env.IMAGE}:latest"
