@@ -45,6 +45,7 @@ pipeline {
             --pull \
             --build-arg KUBELET=${KUBELET} \
             --build-arg SHA=${SHA_AMD64} \
+            --build-arg ARCH=amd64 \
             -t $LOCAL_REGISTRY_IMAGE_VERSION_NAME \
             -f ./Dockerfile.amd64 \
             .
