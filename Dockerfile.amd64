@@ -1,12 +1,11 @@
-FROM docker.io/alpine:latest AS fetcher
+FROM docker.io/curlimages/curl:latest AS fetcher
 LABEL maintainer="Dalton Hubble <dghubble@gmail.com>"
 
 ARG KUBELET
 ARG ARCH
 ARG SHA
 
-RUN apk add curl && \
-    curl -L https://dl.k8s.io/${KUBELET}/kubernetes-node-linux-${ARCH}.tar.gz -o node.tar.gz && \
+RUN curl -L https://dl.k8s.io/${KUBELET}/kubernetes-node-linux-${ARCH}.tar.gz -o node.tar.gz && \
     echo "${SHA}  node.tar.gz" | sha512sum -c && \
     tar xzf node.tar.gz kubernetes/node/bin/kubectl kubernetes/node/bin/kubelet
 
@@ -33,6 +32,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     udev \
     util-linux
 
-COPY --from=fetcher /kubernetes/node/bin/kubelet /usr/local/bin/kubelet
-COPY --from=fetcher /kubernetes/node/bin/kubectl /usr/local/bin/kubectl
+COPY --from=fetcher /home/curl_user/kubernetes/node/bin/kubelet /usr/local/bin/kubelet
+COPY --from=fetcher /home/curl_user/kubernetes/node/bin/kubectl /usr/local/bin/kubectl
 ENTRYPOINT ["/usr/local/bin/kubelet"]
